@@ -16,14 +16,14 @@ For the simulation examples:
 
 -  Load the file simulationData.RData, in the /data directory.
 
-- Run the workflow archive: simulationWorkflow.R
+- Run the archive: simulationWorkflow.R
 
 For the real data examples:
 
 -  Load the libraries MASS and pdfCluster, and also the Cancer RNA-Seq Data Set, which can be downloaded from
 https://archive.ics.uci.edu/ml/datasets/gene+expression+cancer+RNA-Seq#
 
-- Run the workflow archive: realDataWorkflow.R
+- Run the archive: realDataWorkflow.R
 
 
 
