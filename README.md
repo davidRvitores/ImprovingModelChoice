@@ -20,7 +20,7 @@ For the simulation examples:
 
 For the real data examples:
 
--  Load the libraries MASS and pdfCluster must be loaded, and also the Cancer RNA-Seq Data Set, which can be downloaded from
+-  Load the libraries MASS and pdfCluster, and also the Cancer RNA-Seq Data Set, which can be downloaded from
 https://archive.ics.uci.edu/ml/datasets/gene+expression+cancer+RNA-Seq#
 
 - Run the workflow archive: realDataWorkflow.R
