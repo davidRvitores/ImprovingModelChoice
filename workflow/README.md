@@ -3,7 +3,7 @@ This directory contain the files needed for the reproduction of all the results 
 The following comments are of great importance for the undertanding of the results:
 
   - Many algorithms depend on random numbers of initializations nstart. This number is set with a low value in some examples, in order to reduce the computational time.
-  In other cases, the number of iterations has also been decreased, with the same objective.
+  In other cases, the number of iterations of various procedures has also been decreased, with the same objective.
   Because of that, the optimal solution presented in the article might not be found, but increasing this value should allow you to achieve the best solution. 
   The examples where this occurs are commented in the code.  
 
