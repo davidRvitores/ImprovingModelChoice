@@ -1,4 +1,9 @@
-This directory contain the files needed for the reproduction of all the results given in the paper, including tables and figures. The workflow is splited in two main parts, simulation examples and real data examples.
+This directory contain the files needed for the reproduction of all the results given in the paper, including tables and figures. The workflow is splitted into two main parts, simulation examples and real data examples.
+
+- For the simulation examples, the file simulationData.RData must be loaded.
+
+- For the real data examples, the libraries MASS and pdfCluster must be loaded, and also the Cancer RNA-Seq Data Set, which can be downloaded from
+https://archive.ics.uci.edu/ml/datasets/gene+expression+cancer+RNA-Seq#
 
 The following comments are of great importance for the undertanding of the results:
 
