@@ -14,4 +14,4 @@ The following comments are of great importance for the undertanding of the resul
 
  - Even if we take the same number of random initializations and iterations, techniques used for model validation (both in simulation examples
  and real data examples) are based on random methods, such as Monte Carlo and resampling.
- Results given in that case should slightly vary from the results given in the paper.
+ Results given in that case would slightly vary from the results given in the paper.
