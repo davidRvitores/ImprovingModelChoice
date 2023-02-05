@@ -104,7 +104,7 @@
 
 # save(SigmaMatrixClas,SnMatrixClas XmatrixClas,labelsMatrixClas,muCPC,SigmaCPC,Xcpc,labelsCPC,muPROP,SigmaPROP,Xprop,labelsPROP, 
 # file= "simulationData.RData")
-load("C:/Users/davii/OneDrive/Desktop/DOCTORADO/TRABAJOS/Parsimonious classification /github/simulationData.RData")
+load("PATH/github/simulationData.RData") # Change path
 
 
 ############################################################################################################################
