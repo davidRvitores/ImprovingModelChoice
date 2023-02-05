@@ -401,8 +401,8 @@ cat("\n OLIVE OIL Cross Validation Results: \n",
 # THIS EXAMPLE NEEDS A LOT OF RANDOM INITIALIZATIONS, EXPENSIVE COMPUTATIONAL TIMES. HERE WE SET 
 # NSTART=20, BUT MORE INITIALIZACIONS MIGHT BE NEEDED TO GET THE OPTIMAL SOLUTION.
 
-dataCancer <- read.csv(file="/home/david/DATOS/data.csv",header=T)
-lab0 <- read.csv(file="/home/david/DATOS/labels.csv",header=T)
+dataCancer <- read.csv(file="PATH/data.csv",header=T) # change path
+lab0 <- read.csv(file="PATH/labels.csv",header=T)     # change path
 labels <- as.numeric(factor(lab0[,2]))
 
 cancer <- as.matrix(dataCancer)
