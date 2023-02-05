@@ -205,7 +205,7 @@ grafElipsesError <- function(X,posterior,par,d,componentes,labels){
                       ,centre=mu1[i,], npoints=500,level=0.9),col=(i),lwd=1.4)
         points(mu1,pch=as.character(par$P),lwd=5,cex=2.5)
       }
-      points(X1[mal,],col=G[mal],cex=1,pch=(labels[mal]+2))
+      #points(X1[mal,],col=G[mal],cex=1,pch=(labels[mal]+2))
       points(X1[mal,],col="red",pch=1,cex=3,lwd=1)
     }
   }
@@ -243,7 +243,7 @@ error <- function(labels,classification){
   }
   cat("Confusion Matrix: \n")
   print(table(labels,grupo))
-  cat("\n error = ",sum(labels!=grupo),"/",N,"=",sum(labels!=grupo)/N)
+  cat("\n error = ",sum(labels!=grupo),"/",N,"=",sum(labels!=grupo)/N,"\n")
 }
 
 
@@ -661,8 +661,10 @@ GCPC <- function(X,k,M,csh,cvol,niter,tol,nstart,graph){
   #loglikF <- rep(0,nstart)
   loglikF <- rep(0,1)
   
+  cat("start: ")
   for(rep in 1:nstart){
-    cat("\n start",rep,"--------------------------------------------------------- \n\n")
+    cat(rep,"-")
+    #cat("\n start",rep,"--------------------------------------------------------- \n\n")
     
     # Initial solution : ------------------------------------------
     
@@ -714,7 +716,7 @@ GCPC <- function(X,k,M,csh,cvol,niter,tol,nstart,graph){
     while(i<niter && diff>tol){
       i <- i+1
       
-      cat(" Iteration \t", i-1," \t loglik = :",round(loglik[i-1],2),"\n")
+      #cat(" Iteration \t", i-1," \t loglik = :",round(loglik[i-1],2),"\n")
       
       posterior <- pasoE1(X,par)
       res <-  pasoM1(X,posterior)
@@ -760,6 +762,7 @@ GCPC <- function(X,k,M,csh,cvol,niter,tol,nstart,graph){
       }
     }
   }
+  cat("\n")
   res <- list( "par"= par_,
                "posterior"= posterior_,
                "loglik"=loglik_,
@@ -797,8 +800,10 @@ GCPCclas <- function(X,labels,M,csh,cvol,niter,tol,nstart,graph){
   
   loglikF <- rep(0,nstart)
   
+  cat("start: ")
   for(rep in 1:nstart){
-    cat("start ", rep,":\t loglik =")
+    cat(rep,"-")
+    #cat("start ", rep,":\t loglik =")
     
     # initial solution: ------------------------------------------
     
@@ -837,7 +842,7 @@ GCPCclas <- function(X,labels,M,csh,cvol,niter,tol,nstart,graph){
     }
     par <- pasoM2(Sn,n,par,csh,cvol,4*niter,tol*10^(-4))
     loglikF[rep] <- loglikelihood(X,par)
-    cat(round(loglikF[rep],2),"\n")
+    #cat(round(loglikF[rep],2),"\n")
     
     posterior <- pasoE1(X,par)
     
@@ -860,6 +865,7 @@ GCPCclas <- function(X,labels,M,csh,cvol,niter,tol,nstart,graph){
       }
     }
   }
+  cat("\n")
   res <- list( "par"= par_,
                "posterior"= posterior_,
                "loglik"=loglik_,
@@ -1081,8 +1087,10 @@ GPROP <- function(X,k,M,csh,cvol,niter,tol,nstart,graph){
   #loglikF <- rep(0,nstart)
   loglikF <- rep(0,1)
   
+  cat("start: ")
+  
   for(rep in 1:nstart){
-    cat("\n start",rep,"--------------------------------------------------------- \n\n")
+    cat(rep,"- ")
     
     # solucion inicial: ------------------------------------------
     par <- list()
@@ -1129,7 +1137,7 @@ GPROP <- function(X,k,M,csh,cvol,niter,tol,nstart,graph){
     while(i<niter && diff>tol){
       i <- i+1
       
-      cat(" Iteration \t", i-1," \t loglik = :",round(loglik[i-1],2),"\n")
+      #cat(" Iteration \t", i-1," \t loglik = :",round(loglik[i-1],2),"\n")
       
       posterior <- pasoE1(X,par)
       res <-  pasoM1(X,posterior)
@@ -1155,7 +1163,7 @@ GPROP <- function(X,k,M,csh,cvol,niter,tol,nstart,graph){
       diff <- abs(loglik[i]-loglik[i-1])
     }
     loglikF[rep] <- loglikelihood(X,par)
-    
+    #cat(loglikF[rep],"\n")
     if(graph==T){
       grafElipses(X,posterior,par,min(d,8),componentes=0)
       title(paste("Loglikelihhod=",round(loglikF[rep],2)),line=-6,outer=T)
@@ -1175,6 +1183,7 @@ GPROP <- function(X,k,M,csh,cvol,niter,tol,nstart,graph){
       }
     }
   }
+  cat("\n")
   res <- list( "par"= par_,
                "posterior"= posterior_,
                "loglik"=loglik_,
@@ -1209,8 +1218,10 @@ GPROPclas <- function(X,labels,M,csh,cvol,niter,tol,nstart,graph){
   
   loglikF <- rep(0,nstart)
   
+  cat("start: ")
   for(rep in 1:nstart){
-    cat("start ",rep,": \t Loglik = ")
+    cat(rep, "-")
+    #cat("start ",rep,": \t Loglik = ")
     
     # solucion inicial: ------------------------------------------
     
@@ -1249,7 +1260,7 @@ GPROPclas <- function(X,labels,M,csh,cvol,niter,tol,nstart,graph){
     }
     par <- pasoM2P(Sn,n,par,csh,cvol,4*niter,tol*10^(-4))
     loglikF[rep] <- loglikelihood(X,par)
-    cat(round(loglikF[rep],2),"\n")
+    #cat(round(loglikF[rep],2),"\n")
     
     posterior <- pasoE1(X,par)
     
@@ -1272,6 +1283,7 @@ GPROPclas <- function(X,labels,M,csh,cvol,niter,tol,nstart,graph){
       }
     }
   }
+  cat("\n")
   res <- list( "par"= par_,
                "posterior"= posterior_,
                "loglik"=loglik_,
@@ -1282,7 +1294,11 @@ GPROPclas <- function(X,labels,M,csh,cvol,niter,tol,nstart,graph){
 
 
 
-######################## CROSS VALIDATION FUNCTIONS #######################################
+# CROSS VALIDATION FUNCTIONS -------------------------------------------------------
+
+# Given a partition of the observations in train and test, these functions compute the proportion of test
+# observations missclassified by the model estimated with the train observations. For the models 2-CPC and
+# 2-PROP, we are taking as initial solution the global solution, in order to decrease computational times.
 
 
 cvGCPC <- function(train,test,labelsTrain,labelsTest,par0,csh,cvol,niter,tol){
@@ -1293,7 +1309,7 @@ cvGCPC <- function(train,test,labelsTrain,labelsTest,par0,csh,cvol,niter,tol){
   }
   
   k <- length(unique(labelsTrain))
-  d <- ncol(X)
+  d <- ncol(train)
   
   Sn <- list()
   n <- rep(0,k)
@@ -1324,7 +1340,7 @@ cvGPROP <- function(train,test,labelsTrain,labelsTest,par0,csh,cvol,niter,tol){
   }
   
   k <- length(unique(labelsTrain))
-  d <- ncol(X)
+  d <- ncol(train)
   
   Sn <- list()
   n <- rep(0,k)
@@ -1356,7 +1372,6 @@ cvMclust <- function(train,test,labelsTrain,labelsTest,modelo){
   sink()
   mal <- -1
   if(is.null(Clas)==F){
-    noNulos[h] <- 1
     pred <- predict.MclustDA(Clas,test)$classification
     mal <-  sum(as.numeric(pred)!=as.numeric(labelsTest))/length(labelsTest)
   }
