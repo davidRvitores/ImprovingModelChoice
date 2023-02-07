@@ -1,4 +1,4 @@
-This directory contain the files needed for the reproduction of all the results given in the paper, including tables and figures. The workflow is splitted into two main parts, simulation examples and real data examples.
+This directory contain the files needed for the reproduction of the results given in the paper, including tables and figures. The workflow is splitted into two main parts, simulation examples and real data examples.
 
 - For the simulation examples, the file simulationData.RData must be loaded.
 
