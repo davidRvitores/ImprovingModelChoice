@@ -67,7 +67,8 @@
 # d <- dimension of plot, take the first d components
 # componentes <- axis taken for the representation. If componentes=0, canonical axis, and if 
 #             componentes=1,...,G the axis par$ejes[[componentes]]
-# labels <- original labels of the groups, used to mark the missclassified observations.
+# labels <- original labels of the groups, used to mark the missclassified observations. In clustering
+#          examples, new groups are identified with the originals in a logical way
 
 
 
@@ -104,6 +105,7 @@
 
 # save(SigmaMatrixClas,SnMatrixClas XmatrixClas,labelsMatrixClas,muCPC,SigmaCPC,Xcpc,labelsCPC,muPROP,SigmaPROP,Xprop,labelsPROP, 
 # file= "simulationData.RData")
+
 load("PATH/github/simulationData.RData") # Change path
 
 
@@ -204,7 +206,7 @@ for(i in 1:k){
 
 #----------------------------- 2-CPC solution ------------------------------------
 
-clusCPC <- GCPC(Xcpc,k=6,M=2,csh=100,cvol=100,niter=200,tol=10^(-8),nstart=5,graph=F)
+clusCPC <- GCPC(Xcpc,k=6,M=2,csh=100,cvol=100,niter=200,tol=10^(-8),nstart=10,graph=F)
 clusCPC$BIC
 
 # Confusion table
@@ -261,7 +263,7 @@ for(i in 1:k){
 
 #----------------------------- 2-CPC solution ------------------------------------
 
-discCPC <- GCPCclas(Xcpc,labelsCPC,M=2,csh=100,cvol=100,niter=100,tol=10^(-5),nstart=3,graph=F)
+discCPC <- GCPCclas(Xcpc,labelsCPC,M=2,csh=100,cvol=100,niter=100,tol=10^(-5),nstart=5,graph=F)
 discCPC$BIC
 # error(labels,classification)  <- function to directly compute the confusion matrix and classification error
 error(labelsCPC,apply(discCPC$posterior,1,which.max))
@@ -597,4 +599,3 @@ for(l in 1:m){
 
 cat(" Proportion of times in which clustering 2-CPC improves the BIC value:\n",sum(BestCLUST)/m,"\n",
     "Proportion of times in which discriminant analysis 2-CPC improves the BIC value:\n",sum(BestDA)/m)
-
