@@ -12,6 +12,13 @@ library(pracma)
 library(modeest)
 library(RColorBrewer)
 
+# Color palette used for the plots 
+
+paleta <- brewer.pal(n=12,name="Paired")
+paleta[6] <- paleta[10]
+palette(paleta)
+
+
 ################## 2) AUXILIAR FUNCIONS ####################################################################################
 
 # Function to create k covariance matrices given:
@@ -36,12 +43,12 @@ createSigma <- function(Lambda,ejes,P){
 
 # X <- data matrix
 # par <- list containing the parameters of a model:
-    # par$pi <- vector of length k containing the weights
-    # par$mu <- matrix containing in the row i the mean of the group i
-    # par$Lambda <- list with the k sets of eigenvalues (without imposing prod(Lambda[[i]])=1),
-    #               we are including here the shapes and volumes
-    # par$ejes <- list with the M common orthogonal matrices
-    # par$P <- vector of length k with the group assignation 
+# par$pi <- vector of length k containing the weights
+# par$mu <- matrix containing in the row i the mean of the group i
+# par$Lambda <- list with the k sets of eigenvalues (without imposing prod(Lambda[[i]])=1),
+#               we are including here the shapes and volumes
+# par$ejes <- list with the M common orthogonal matrices
+# par$P <- vector of length k with the group assignation 
 
 loglikelihood <- function(X,par){
   N <- nrow(X)
@@ -815,7 +822,7 @@ GCPCclas <- function(X,labels,M,csh,cvol,niter,tol,nstart,graph){
       par$Lambda[[i]] <- eigen(Sn[[i]])$values
     }
     par$P <- sample(1:M,k,rep=T)
-
+    
     for(j in 1:M){
       if(sum(par$P==j)==0){
         par$P[sample(1:k,1)] <- j
@@ -1117,7 +1124,7 @@ GPROP <- function(X,k,M,csh,cvol,niter,tol,nstart,graph){
     for(i in 1:M){
       par$ejes[[i]] <- diag(d)
     }
-
+    
     options(warn=-1)
     muestra <- sample(1:N,trunc(N/2))
     clus <- tclust(X[muestra,],k,alpha=0,nstart=100,restr.fact = min(csh,cvol))
@@ -1127,7 +1134,7 @@ GPROP <- function(X,k,M,csh,cvol,niter,tol,nstart,graph){
     par$mu <- centros
     options(warn=0)
     
-
+    
     
     # ----------------------------------------------------------------------
     loglik <- 10000000
