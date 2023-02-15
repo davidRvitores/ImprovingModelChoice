@@ -1,9 +1,8 @@
-(personal information removed for anonymous peer review)
     
     Code generated to fit the models and replicate the reproduce the results in the paper:
     "Improving Model Choice in Classification: An Approach Based on Clustering of Covariance Matrices"
 
-        Copyright (C) 2023 , ___________________.
+        Copyright (C) 2023 , David Rodríguez Vítores.
 
         This program is free software: you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
@@ -17,4 +16,4 @@
         GNU General Public License for more details.
 
 
-email: ______________________________
+email: david.rodriguez.vitores@uva.es
